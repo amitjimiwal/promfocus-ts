@@ -1,3 +1,7 @@
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../redux/store";
+import { setLongBreakInterval, updateModeTime } from "../redux/slice/timerslice,";
+
 export interface InputInterface {
   id: string;
   label?: string;
@@ -5,18 +9,10 @@ export interface InputInterface {
   name: string;
   min: number;
   value: number;
-  onChange: () => void;
 }
 
-const Input = ({
-  id,
-  label,
-  type,
-  name,
-  min,
-  value,
-  onChange,
-}: InputInterface) => {
+const Input = ({ id, label, type, name, min, value }: InputInterface) => {
+  const dispatch = useDispatch<AppDispatch>();
   return (
     <div className=" flex flex-col w-1/3 px-2 justify-center">
       {label && (
@@ -25,7 +21,9 @@ const Input = ({
         </label>
       )}
       <input
-        onChange={onChange}
+        onChange={(e) =>
+          label ? dispatch(updateModeTime({ mode: id, time: Number(e.target.value) })) : dispatch(setLongBreakInterval(Number(e.target.value)))
+        }
         value={value}
         min={min}
         className="bg-settingscolor outline-none p-2"

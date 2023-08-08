@@ -3,10 +3,12 @@
 // all the state of an application must be stored in a single store
 // To specify how the state tree is transformed by actions, you write pure reducers.
 import { configureStore } from "@reduxjs/toolkit";
-
+import timerreducer from './slice/timerslice,'
 const Store=configureStore({
          reducer:{
-
+          timer:timerreducer, 
          }
 })
 export default Store;
+export type AppDispatch = typeof Store.dispatch;
+export type RootState = ReturnType<typeof Store.getState>;

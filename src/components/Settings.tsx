@@ -1,12 +1,16 @@
 import { GrClose } from "react-icons/gr";
 import { LuTimer } from "react-icons/lu";
 import Input from "./Input";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../redux/store";
+import { opensettings } from "../redux/slice/timerslice,";
 const SettingsHeader = () => {
+  const dispatch=useDispatch<AppDispatch>();
   return (
     <>
       <h4 className="text-xl">Settings</h4>
       <div
-        onClick={() => console.log("close setting")}
+        onClick={() => dispatch(opensettings())}
         className="text-2xl cursor-pointer text-settingscolor font-bold"
       >
         <GrClose />
@@ -15,14 +19,16 @@ const SettingsHeader = () => {
   );
 };
 const Button = () => {
+  const dispatch=useDispatch<AppDispatch>();
   return (
-    <button className=" bg-black px-4 py-2 object-contain text-white font-bold rounded-xl">
+    <button className=" bg-black px-4 py-2 object-contain text-white font-bold rounded-xl" onClick={()=> dispatch(opensettings())}>
       {" "}
       OK
     </button>
   );
 };
 const Settings = () => {
+  const { modes ,longBreakInterval} = useSelector((state: RootState) => state.timer);
   return (
     <>
       <div className="p-4 bg-white rounded-t-xl">
@@ -36,33 +42,8 @@ const Settings = () => {
         <div className="my-3">
           <h1>Time (minutes)</h1>
           <div className="flexproperty justify-between">
-            <Input
-              id="pomodoro"
-              label="pomodoro"
-              type="number"
-              name="pomodoro"
-              value={25}
-              min={1}
-              onChange={() => console.log("onchngwe")}
-            />
-            <Input
-              id="Short break"
-              label="Short break"
-              type="number"
-              name="pomodoro"
-              value={25}
-              min={1}
-              onChange={() => console.log("onchngwe")}
-            />
-            <Input
-              id="Long Break"
-              label="Long Break"
-              type="number"
-              name="pomodoro"
-              value={25}
-              min={1}
-              onChange={() => console.log("onchngwe")}
-            />
+            {Object.values(modes).map(({id,label,time})=>
+            <Input id={id} label={label} value={time} type="number" name={label} min={1}/>)}
           </div>
         </div>
         <div className="flexproperty justify-between my-5">
@@ -71,9 +52,8 @@ const Settings = () => {
             id="Long Break Interval"
             type="number"
             name="longbreakinterval"
-            value={4}
+            value={longBreakInterval}
             min={1}
-            onChange={() => console.log("onchngwe")}
           />
         </div>
       </div>
