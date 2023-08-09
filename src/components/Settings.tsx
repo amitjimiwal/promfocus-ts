@@ -43,7 +43,7 @@ const Settings = () => {
           <h1>Time (minutes)</h1>
           <div className="flexproperty justify-between">
             {Object.values(modes).map(({id,label,time})=>
-            <Input id={id} label={label} value={time} type="number" name={label} min={1}/>)}
+            <Input id={id} label={label} value={time} type="number" name={label} min={1} key={id}/>)}
           </div>
         </div>
         <div className="flexproperty justify-between my-5">

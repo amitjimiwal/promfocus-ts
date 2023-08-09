@@ -24,13 +24,14 @@ const Timer = ({ time, next,start,stop ,ticking}: Props) => {
           <ModeButton
             active={id === mode}
             OnClick={() => dispatch(setMode(id))}
-          >
+           key={id}>
             {label}
           </ModeButton>
         ))}
       </div>
       <div className="text-8xl text-center my-10 text-white font-bold tracking-wider">
         {formattimeInMinutes(time)}
+        {/* {time!==0 ? formattimeInMinutes(time): `${modes[mode].time} : 00`} */}
       </div>
       <div className="flexproperty gap-4">
         <TimerButton

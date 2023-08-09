@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ProgressBar from "../ProgressBar";
 import Timer from "../Timer";
 import { AppDispatch, RootState } from "../../redux/store";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect} from "react";
 import { increaseRound, setMode } from "../../redux/slice/timerslice,";
 import { LONG_BREAK, POMODORO, SHORT_BREAK } from "../../constant";
 import useCountdown from "../../hooks/useCountdown";
@@ -10,7 +10,8 @@ import { updateTitle } from "../../utils/utilityfunction";
 
 const Main = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const { modes, mode } = useSelector((state: RootState) => state.timer);
+  console.log("main render")
+  const { modes, mode ,round,longBreakInterval} = useSelector((state: RootState) => state.timer);
   const {ticking, start, stop, reset, timeLeft, progress} =useCountdown({
     onStart:()=>{
     },
@@ -30,7 +31,13 @@ const Main = () => {
   const next = useCallback(() => {
     switch (mode) {
       case LONG_BREAK:
+        jumpTo(POMODORO);
+        break;
       case SHORT_BREAK:
+        if(round==longBreakInterval){
+          jumpTo(LONG_BREAK);
+          break;
+        }
         jumpTo(POMODORO);
         break;
       default:
@@ -38,7 +45,7 @@ const Main = () => {
         dispatch(increaseRound());
         break;
     }
-  }, [dispatch, jumpTo, mode]);
+  }, [dispatch, jumpTo, mode,start]);
   useEffect(() => {
     updateTitle(timeLeft,mode)
   }, [mode,timeLeft]);
