@@ -13,7 +13,6 @@ export default function useCountdown({onStart, minutes, onComplete ,onStop}:Prop
   const [progress, setProgress] = useState(0);
   const [timeLeft, setTime] = useState(time);
   const [ticking, setTicking] = useState(false);
-console.log(timeLeft);
   const clear = () => {
     clearInterval(timerId.current);
     timerId.current = undefined;

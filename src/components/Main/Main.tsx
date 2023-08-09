@@ -19,7 +19,7 @@ const Main = () => {
        next()
    },
    onStop:()=>{
-
+       
    }
    })
    const jumpTo = useCallback(

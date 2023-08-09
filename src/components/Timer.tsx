@@ -14,7 +14,6 @@ interface Props {
 }
 
 const Timer = ({ time, next,start,stop ,ticking}: Props) => {
-  console.log(" time ",time)
   const { modes, mode } = useSelector((state: RootState) => state.timer);
   const dispatch = useDispatch<AppDispatch>();
 
