@@ -10,7 +10,10 @@ export default {
         bgbutton:'#ffffff33',
         loaderbg:'#0000001a',
         modebackground:'#00000026',
-        settingscolor:'#EFEFEF'
+        settingscolor:'#EFEFEF',
+        pomodoro:'#FCA5A5',
+        shortbreak:'#397097',
+        longbreak:'#518A58'
       }
     },
   },

@@ -64,6 +64,6 @@ console.log(timeLeft);
     reset,
     ticking,
     timeLeft,
-    progress: (progress / time) * 100,
+    progress: (progress / time) * 100000,
   };
 }
