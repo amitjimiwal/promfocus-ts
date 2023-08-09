@@ -3,7 +3,7 @@ import { POMODORO, SHORT_BREAK, LONG_BREAK } from '../../constant'
 import { reduxState } from '../../interface/appinterface'
 const initialState: reduxState = {
          mode: POMODORO,
-         round: 1,
+         round: 0,
          longBreakInterval: 1,
          modes: {
                   [POMODORO]: {
@@ -15,13 +15,13 @@ const initialState: reduxState = {
                   [SHORT_BREAK]: {
                            id: SHORT_BREAK,
                            label: "Short Break",
-                           time: 1,
+                           time: 2,
                            color:'#397097'
                   },
                   [LONG_BREAK]: {
                            id: LONG_BREAK,
                            label: "Long Break",
-                           time: 1,
+                           time: 3,
                            color:'#518A58'
                   },
          },
@@ -47,9 +47,12 @@ const timerSlice = createSlice({
                   },
                   opensettings:(state)=>{
                       state.settingsopen= !state.settingsopen
+                  },
+                  resetrounds:(state)=>{
+                    state.round=0
                   }
          }
 })
 
 export default timerSlice.reducer;
-export const { setLongBreakInterval, setMode, updateModeTime, increaseRound ,opensettings} = timerSlice.actions
+export const { setLongBreakInterval, setMode, updateModeTime, increaseRound ,opensettings,resetrounds} = timerSlice.actions

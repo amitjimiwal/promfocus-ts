@@ -31,7 +31,7 @@ const Timer = ({ time, next,start,stop ,ticking}: Props) => {
       </div>
       <div className="text-8xl text-center my-10 text-white font-bold tracking-wider">
         {formattimeInMinutes(time)}
-        {/* {time!==0 ? formattimeInMinutes(time): `${modes[mode].time} : 00`} */}
+        {/* {time!==0 ? formattimeInMinutes(time): `${modes[mode].time >10 ? modes[mode].time : "0"+modes[mode].time} : 00`} */}
       </div>
       <div className="flexproperty gap-4">
         <TimerButton

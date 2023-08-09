@@ -3,14 +3,13 @@ import ProgressBar from "../ProgressBar";
 import Timer from "../Timer";
 import { AppDispatch, RootState } from "../../redux/store";
 import { useCallback, useEffect} from "react";
-import { increaseRound, setMode } from "../../redux/slice/timerslice,";
+import { increaseRound, resetrounds, setMode } from "../../redux/slice/timerslice,";
 import { LONG_BREAK, POMODORO, SHORT_BREAK } from "../../constant";
 import useCountdown from "../../hooks/useCountdown";
 import { updateTitle } from "../../utils/utilityfunction";
 
 const Main = () => {
   const dispatch = useDispatch<AppDispatch>();
-  console.log("main render")
   const { modes, mode ,round,longBreakInterval} = useSelector((state: RootState) => state.timer);
   const {ticking, start, stop, reset, timeLeft, progress} =useCountdown({
     onStart:()=>{
@@ -32,9 +31,10 @@ const Main = () => {
     switch (mode) {
       case LONG_BREAK:
         jumpTo(POMODORO);
+        dispatch(resetrounds())
         break;
       case SHORT_BREAK:
-        if(round==longBreakInterval){
+        if(round>=longBreakInterval){
           jumpTo(LONG_BREAK);
           break;
         }
@@ -45,7 +45,7 @@ const Main = () => {
         dispatch(increaseRound());
         break;
     }
-  }, [dispatch, jumpTo, mode,start]);
+  }, [dispatch, jumpTo, mode,longBreakInterval,round]);
   useEffect(() => {
     updateTitle(timeLeft,mode)
   }, [mode,timeLeft]);
