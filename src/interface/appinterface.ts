@@ -7,6 +7,7 @@ export interface reduxState {
                            id: string;
                            label: string;
                            time: number;
+                           color:string;
                   };
          };
          settingsopen:boolean;

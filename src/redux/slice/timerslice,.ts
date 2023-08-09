@@ -4,22 +4,25 @@ import { reduxState } from '../../interface/appinterface'
 const initialState: reduxState = {
          mode: POMODORO,
          round: 1,
-         longBreakInterval: 4,
+         longBreakInterval: 1,
          modes: {
                   [POMODORO]: {
                            id: POMODORO,
                            label: "Pomodoro",
-                           time: 25,
+                           time: 1,
+                           color:'#FCA5A5'
                   },
                   [SHORT_BREAK]: {
                            id: SHORT_BREAK,
                            label: "Short Break",
-                           time: 5,
+                           time: 1,
+                           color:'#397097'
                   },
                   [LONG_BREAK]: {
                            id: LONG_BREAK,
                            label: "Long Break",
-                           time: 15,
+                           time: 1,
+                           color:'#518A58'
                   },
          },
          settingsopen:false

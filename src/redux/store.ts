@@ -10,5 +10,6 @@ const Store=configureStore({
          }
 })
 export default Store;
+// types for the useSelector and the useDispatch hook
 export type AppDispatch = typeof Store.dispatch;
 export type RootState = ReturnType<typeof Store.getState>;

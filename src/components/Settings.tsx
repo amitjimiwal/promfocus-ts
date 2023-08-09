@@ -30,7 +30,7 @@ const Button = () => {
 const Settings = () => {
   const { modes ,longBreakInterval} = useSelector((state: RootState) => state.timer);
   return (
-    <>
+    <div className="absolute top-1/3 w-[300px] sm:w-[400px] md:w-[500px]">
       <div className="p-4 bg-white rounded-t-xl">
         <div className="flexproperty justify-between">
           <SettingsHeader />
@@ -60,7 +60,7 @@ const Settings = () => {
       <div className="bg-settingscolor p-5 text-right rounded-b-xl">
         <Button />
       </div>
-    </>
+    </div>
   );
 };
 

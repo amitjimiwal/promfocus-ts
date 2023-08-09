@@ -3,7 +3,7 @@ interface Props{
 }
 const ProgressBar = ({progress}:Props) => {
   return (
-    <div className="w-full h-1 bg-loaderbg rounded-xl ">
+    <div className="w-full h-1 bg-loaderbg rounded-xl overflow-hidden">
       {/* child div  */}
       <div className={`h-full bg-white`} style={{width:`${progress}%`}}>
       </div>
