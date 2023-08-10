@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProgressBar from "../ProgressBar";
 import Timer from "../Timer";
@@ -8,20 +9,22 @@ import { LONG_BREAK, POMODORO, SHORT_BREAK } from "../../constant";
 import useCountdown from "../../hooks/useCountdown";
 import { updateTitle } from "../../utils/utilityfunction";
 
-const Main = () => {
+const Main :React.FC= () => {
   const dispatch = useDispatch<AppDispatch>();
   const { modes, mode ,round,longBreakInterval} = useSelector((state: RootState) => state.timer);
   const {ticking, start, stop, reset, timeLeft, progress} =useCountdown({
     onStart:()=>{
+      console.log("Started timer")
     },
    minutes:modes[mode].time,
    onComplete:()=>{
        next()
    },
    onStop:()=>{
-       
+       console.log("Ended the timer")
    }
    })
+
    const jumpTo = useCallback(
     (id:string) => {
       reset();
