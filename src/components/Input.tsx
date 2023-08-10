@@ -30,6 +30,7 @@ const Input :React.FC<InputInterface> = ({ id, label, type, name, min, value }) 
         id={id}
         type={type}
         name={name}
+        aria-label="input-timer"
       />
     </div>
   );

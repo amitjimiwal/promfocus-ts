@@ -7,7 +7,7 @@ interface Props{
 }
 const ModeButton :React.FC<Props> = ({children,active,OnClick}) => {
   return (
-    <div onClick={OnClick} className={`text-white font-semibold p-2 w-28 flex justify-center items-center rounded-lg  cursor-pointer ${active ? 'bg-modebackground' : ''}`}>
+    <div onClick={OnClick} className={`text-white font-semibold p-2 w-28 flex justify-center items-center rounded-lg  cursor-pointer ${active ? 'bg-modebackground' : ''}`} data-testid="mode-button">
       {children}
     </div>
   )

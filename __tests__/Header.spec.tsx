@@ -7,11 +7,6 @@ import renderWithProviders from "../src/utils/test.utls";
 
 describe("Header", () => {
   it("should render the Promfocus text", () => {
-//     render(
-//       <Provider store={Store}>
-//         <Header />
-//       </Provider>
-//     );
 renderWithProviders(Header)
     const headertext = screen.getByText(/Promofocus/i);
     //     /{your text}/ it represents that case of the letter while finding from the render

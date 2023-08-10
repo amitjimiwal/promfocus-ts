@@ -8,7 +8,7 @@ import { opensettings } from "../redux/slice/timerslice,";
 const SettingsHeader :React.FC= () => {
   const dispatch=useDispatch<AppDispatch>();
   return (
-    <>
+    <div className="flex justify-between" data-testid="settingsmenu">
       <h4 className="text-xl">Settings</h4>
       <div
         onClick={() => dispatch(opensettings())}
@@ -16,7 +16,7 @@ const SettingsHeader :React.FC= () => {
       >
         <GrClose />
       </div>
-    </>
+    </div>
   );
 };
 const Button = () => {
@@ -33,7 +33,7 @@ const Settings = () => {
   return (
     <div className="absolute top-1/3 w-[300px] sm:w-[400px] md:w-[500px]">
       <div className="p-4 bg-white rounded-t-xl">
-        <div className="flexproperty justify-between">
+        <div>
           <SettingsHeader />
         </div>
         <div className="flexproperty justify-start gap-2 text-lg text-gray-400 my-3">

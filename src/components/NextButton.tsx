@@ -5,7 +5,7 @@ interface Props{
 }
 const NextButton :React.FC<Props> = ({OnClick}) => {
   return (
-    <div onClick={OnClick} className='text-5xl text-white '>
+    <div onClick={OnClick} className='text-5xl text-white ' data-testid="next-button">
       <GiNextButton/>
     </div>
   )
