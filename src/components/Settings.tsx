@@ -1,10 +1,11 @@
+import React from "react";
 import { GrClose } from "react-icons/gr";
 import { LuTimer } from "react-icons/lu";
 import Input from "./Input";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../redux/store";
 import { opensettings } from "../redux/slice/timerslice,";
-const SettingsHeader = () => {
+const SettingsHeader :React.FC= () => {
   const dispatch=useDispatch<AppDispatch>();
   return (
     <>

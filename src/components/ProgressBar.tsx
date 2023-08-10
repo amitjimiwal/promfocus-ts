@@ -1,7 +1,8 @@
+import React from "react";
 interface Props{
   progress:number
 }
-const ProgressBar = ({progress}:Props) => {
+const ProgressBar :React.FC<Props>= ({progress}) => {
   return (
     <div className="w-full h-1 bg-loaderbg rounded-xl overflow-hidden">
       {/* child div  */}

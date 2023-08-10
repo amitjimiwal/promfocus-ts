@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ModeButton from "./ModeButton";
 import NextButton from "./NextButton";
@@ -13,7 +14,7 @@ interface Props {
   ticking:boolean;
 }
 
-const Timer = ({ time, next,start,stop ,ticking}: Props) => {
+const Timer :React.FC<Props>= ({ time, next,start,stop ,ticking}) => {
   const { modes, mode } = useSelector((state: RootState) => state.timer);
   const dispatch = useDispatch<AppDispatch>();
 

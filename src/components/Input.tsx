@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../redux/store";
 import { setLongBreakInterval, updateModeTime } from "../redux/slice/timerslice,";
-
+import React from "react";
 export interface InputInterface {
   id: string;
   label?: string;
@@ -11,7 +11,7 @@ export interface InputInterface {
   value: number;
 }
 
-const Input = ({ id, label, type, name, min, value }: InputInterface) => {
+const Input :React.FC<InputInterface> = ({ id, label, type, name, min, value }) => {
   const dispatch = useDispatch<AppDispatch>();
   return (
     <div className=" flex flex-col w-1/3 px-2 justify-center">

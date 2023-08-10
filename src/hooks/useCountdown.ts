@@ -1,14 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-interface Props{
-         onStart:()=>void;
-         minutes:number;
-         onComplete:( )=>void;
-         onStop?:()=> void ;
+interface Props {
+  onStart: () => void;
+  minutes: number;
+  onComplete: () => void;
+  onStop?: () => void;
 }
-// type reftype=number | undefined;
-export default function useCountdown({onStart, minutes, onComplete ,onStop}:Props) {
-  const timerId : React.MutableRefObject<number | undefined>
-  = useRef(undefined);
+export default function useCountdown({ onStart, minutes, onComplete, onStop }: Props) {
+  const timerId
+    = useRef<ReturnType<typeof setInterval> | undefined | number>(undefined);
   const time = minutes * 60 * 1000;
   const [progress, setProgress] = useState(0);
   const [timeLeft, setTime] = useState(time);
